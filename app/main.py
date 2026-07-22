@@ -9,6 +9,7 @@ from app.routers import validation_plan
 from app.database import engine
 from app.routers import validation_schedule
 from app.routers import remediation
+from app.routers import exception
 Base.metadata.create_all(bind=engine)
 
 app = FastAPI(
@@ -20,6 +21,7 @@ app.include_router(prioritization.router)
 app.include_router(validation_plan.router)
 app.include_router(validation_schedule.router)
 app.include_router(remediation.router)
+app.include_router(exception.router)
 @app.get("/")
 def home():
 
