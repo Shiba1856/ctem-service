@@ -10,6 +10,12 @@ from app.database import engine
 from app.routers import validation_schedule
 from app.routers import remediation
 from app.routers import exception
+from app.routers import report
+from app.routers import trend
+from app.models.schedule import Schedule
+from app.routers import schedule
+from app.models.framework_mapping import FrameworkMapping
+from app.routers import framework_mapping
 Base.metadata.create_all(bind=engine)
 
 app = FastAPI(
@@ -22,6 +28,10 @@ app.include_router(validation_plan.router)
 app.include_router(validation_schedule.router)
 app.include_router(remediation.router)
 app.include_router(exception.router)
+app.include_router(report.router)
+app.include_router(trend.router)
+app.include_router(schedule.router)
+app.include_router(framework_mapping.router)
 @app.get("/")
 def home():
 
